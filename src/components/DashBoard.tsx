@@ -1,4 +1,6 @@
 import Card from "./Card";
+import { LineChart } from "./LineChart";
+import { PieChart } from "./PieChart";
 
 export const DashBoard = () => {
   const data = [
@@ -41,11 +43,19 @@ export const DashBoard = () => {
   ];
 
   return (
-    <div className="bg-cyan-100 w-full h-screen">
+    <div className="bg-cyan-50 w-full h-screen p-5">
       <div className="flex flex-wrap justify-center">
         {data.map((item) => (
           <Card key={item.id} {...item} />
         ))}
+      </div>
+      <div className="flex flex-row justify-center flex-wrap">
+        <div className="mx-1 hidden md:block">
+          <LineChart />
+        </div>
+        <div className="mx-1">
+          <PieChart />
+        </div>
       </div>
     </div>
   );
