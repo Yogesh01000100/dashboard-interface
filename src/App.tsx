@@ -4,7 +4,7 @@ import { SideBar } from "./components/SideBar";
 import { Header } from "./components/Header";
 
 const App = () => {
-  const [sideBarStatus, setSidebarStatus] = useState(false);
+  const [sideBarStatus, setSidebarStatus] = useState(true);
 
   return (
     <div>
