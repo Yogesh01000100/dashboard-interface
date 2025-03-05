@@ -1,6 +1,13 @@
 import Card from "./Card";
 import { LineChart } from "./LineChart";
 import { PieChart } from "./PieChart";
+import {
+  People as UsersIcon,
+  ShoppingCart as OrdersIcon,
+  AttachMoney as EarningsIcon,
+  AccountBalanceWallet as BalanceIcon,
+} from "@mui/icons-material";
+import Users from "./Users";
 
 export const DashBoard = () => {
   const data = [
@@ -8,17 +15,17 @@ export const DashBoard = () => {
       id: 1,
       title: "USERS",
       value: 720,
-      change: "+5%",
-      icon: "user",
+      change: "+1%",
+      icon: <UsersIcon fontSize="medium" className="text-cyan-500" />,
       cta: "See all users",
-      ctaLink: "/users",
+      ctaLink: "/",
     },
     {
       id: 2,
       title: "ORDERS",
       value: 260,
       change: "+2%",
-      icon: "cart",
+      icon: <OrdersIcon fontSize="medium" className="text-cyan-500" />,
       cta: "View all orders",
       ctaLink: "/orders",
     },
@@ -27,7 +34,7 @@ export const DashBoard = () => {
       title: "EARNINGS",
       value: "$4.6k",
       change: "+12%",
-      icon: "dollar",
+      icon: <EarningsIcon fontSize="medium" className="text-cyan-500" />,
       cta: "View net earnings",
       ctaLink: "/earnings",
     },
@@ -35,15 +42,15 @@ export const DashBoard = () => {
       id: 4,
       title: "MY BALANCE",
       value: "$7.8k",
-      change: "+5%",
-      icon: "wallet",
+      change: "-5%",
+      icon: <BalanceIcon fontSize="medium" className="text-cyan-500" />,
       cta: "See details",
       ctaLink: "/balance",
     },
   ];
 
   return (
-    <div className="bg-cyan-50 w-full h-screen p-5">
+    <div className="bg-cyan-50 w-full h-full p-5">
       <div className="flex flex-wrap justify-center">
         {data.map((item) => (
           <Card key={item.id} {...item} />
@@ -56,6 +63,9 @@ export const DashBoard = () => {
         <div className="mx-1">
           <PieChart />
         </div>
+      </div>
+      <div>
+        <Users />
       </div>
     </div>
   );
