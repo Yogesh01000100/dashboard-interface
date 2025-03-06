@@ -50,14 +50,14 @@ export const DashBoard = () => {
   ];
 
   return (
-    <div className="bg-cyan-50 w-full h-full p-5">
+    <div className="bg-cyan-50 w-full min-h-screen flex flex-col p-5">
       <div className="flex flex-wrap justify-center">
         {data.map((item) => (
           <Card key={item.id} {...item} />
         ))}
       </div>
       <div className="flex flex-row justify-center flex-wrap">
-        <div className="mx-1 hidden md:block">
+        <div className="mx-1">
           <LineChart />
         </div>
         <div className="mx-1">

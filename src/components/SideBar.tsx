@@ -47,33 +47,51 @@ export const SideBar: React.FC<SideBarProps> = ({ status, setStatus }) => {
         </span>
       </div>
 
-      <div className="flex-1 px-3">
-        <SectionHeader label="Main" />
-        <NavItem icon={<DashboardIcon />} label="Dashboard" visible={status} />
+      <div className="flex flex-col flex-grow justify-between px-3">
+        <div>
+          <SectionHeader label="Main" />
+          <NavItem
+            icon={<DashboardIcon />}
+            label="Dashboard"
+            visible={status}
+          />
 
-        <SectionHeader label="Lists" />
-        <NavItem icon={<PeopleIcon />} label="Users" visible={status} />
-        <NavItem icon={<Inventory2Icon />} label="Products" visible={status} />
-        <NavItem icon={<ShoppingCartIcon />} label="Orders" visible={status} />
-        <NavItem
-          icon={<LocalShippingIcon />}
-          label="Delivery"
-          visible={status}
-        />
+          <SectionHeader label="Lists" />
+          <NavItem icon={<PeopleIcon />} label="Users" visible={status} />
+          <NavItem
+            icon={<Inventory2Icon />}
+            label="Products"
+            visible={status}
+          />
+          <NavItem
+            icon={<ShoppingCartIcon />}
+            label="Orders"
+            visible={status}
+          />
+          <NavItem
+            icon={<LocalShippingIcon />}
+            label="Delivery"
+            visible={status}
+          />
 
-        <SectionHeader label="Useful" />
-        <NavItem icon={<BarChartIcon />} label="Stats" visible={status} />
-        <NavItem
-          icon={<NotificationsIcon />}
-          label="Notifications"
-          visible={status}
-        />
+          <SectionHeader label="Useful" />
+          <NavItem icon={<BarChartIcon />} label="Stats" visible={status} />
+          <NavItem
+            icon={<NotificationsIcon />}
+            label="Notifications"
+            visible={status}
+          />
+        </div>
 
-        <SectionHeader label="Service" />
-        <NavItem icon={<SettingsIcon />} label="Settings" visible={status} />
+        <div>
+          <SectionHeader label="Service" />
+          <NavItem icon={<SettingsIcon />} label="Settings" visible={status} />
 
-        <SectionHeader label="User" />
-        <NavItem icon={<LogoutIcon />} label="Logout" visible={status} />
+          <div className="mb-5">
+            <SectionHeader label="User" />
+            <NavItem icon={<LogoutIcon />} label="Logout" visible={status} />
+          </div>
+        </div>
       </div>
     </div>
   );
