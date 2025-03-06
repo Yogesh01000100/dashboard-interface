@@ -16,7 +16,7 @@ const Card: React.FC<CardProps> = ({
   ctaLink,
 }) => {
   return (
-    <div className="border border-cyan-300 mx-2 my-2 bg-white px-3 pt-1 pb-3 w-60 shadow-md rounded-xl flex flex-col">
+    <div className="border border-cyan-300 mx-4 my-2 bg-white px-3 pt-1 pb-3 w-60 shadow-md rounded-xl flex flex-col">
       <div className="flex items-center justify-between my-1">
         <div className="flex flex-row justify-center items-center">
           <div className="text-2xl">{icon}</div>

@@ -188,7 +188,7 @@ const Users: FC = () => {
   const [users] = useState<User[]>(usersData);
 
   return (
-    <div className="pt-3 pb-5 px-5 bg-white/80 backdrop-blur-lg rounded-xl border border-cyan-300 shadow-md w-[95%] max-w-5xl mx-auto">
+    <div className="hidden md:block pt-3 pb-5 px-5 bg-white/80 backdrop-blur-lg rounded-xl border border-cyan-300 shadow-md w-[95%] max-w-5xl mx-auto">
       <h3 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
         Users
       </h3>

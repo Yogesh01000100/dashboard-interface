@@ -130,7 +130,7 @@ export const LineChart: React.FC = () => {
   };
 
   return (
-    <div className="m-5 p-4 bg-white shadow-md rounded-xl border border-cyan-300 w-[600px]">
+    <div className="m-5 py-4 px-3 bg-white shadow-md hidden md:block rounded-xl border border-cyan-300 w-[600px]">
       <Line data={chartData} options={options} />
     </div>
   );
