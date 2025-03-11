@@ -159,33 +159,16 @@ const usersData: User[] = [
   },
 ];
 
-const getStatusBadge = (status: string) => {
-  switch (status) {
-    case "Active":
-      return (
-        <span className="px-2 py-1 text-xs border border-gray-400 font-semibold text-green-600 bg-green-100 rounded-md">
-          Active
-        </span>
-      );
-    case "Pending":
-      return (
-        <span className="px-2 py-1 text-xs border border-gray-400 font-semibold text-yellow-600 bg-yellow-100 rounded-md">
-          Pending
-        </span>
-      );
-    case "Banned":
-      return (
-        <span className="px-2 py-1 text-xs border border-gray-400 font-semibold text-red-600 bg-red-100 rounded-md">
-          Banned
-        </span>
-      );
-    default:
-      return null;
-  }
-};
+const PAGE_LIMIT = 6;
 
 const Users: FC = () => {
   const [users] = useState<User[]>(usersData);
+  const [currIndex, setCurrIndex] = useState(0);
+
+  const pages = Math.ceil(users.length / PAGE_LIMIT);
+  const startIndex = currIndex * PAGE_LIMIT;
+  const endIndex = startIndex + PAGE_LIMIT;
+  const currUsers = users.slice(startIndex, endIndex);
 
   return (
     <div className="hidden md:block pt-3 pb-5 px-5 bg-white/80 backdrop-blur-lg rounded-xl border border-cyan-300 shadow-md w-[95%] max-w-5xl mx-auto">
@@ -217,7 +200,7 @@ const Users: FC = () => {
           </TableHead>
 
           <TableBody>
-            {users.map((user, index) => (
+            {currUsers.map((user, index) => (
               <TableRow
                 key={user.id}
                 className={`transition ${
@@ -231,7 +214,18 @@ const Users: FC = () => {
                   {user.orders}
                 </TableCell>
                 <TableCell className="py-3">
-                  {getStatusBadge(user.status)}
+                  <span
+                    className={`px-2 py-1 text-xs border border-gray-400 font-semibold rounded-md 
+                    ${
+                      user.status === "Active"
+                        ? "text-green-600 bg-green-100"
+                        : user.status === "Pending"
+                        ? "text-yellow-600 bg-yellow-100"
+                        : "text-red-600 bg-red-100"
+                    }`}
+                  >
+                    {user.status}
+                  </span>
                 </TableCell>
                 <TableCell className="text-center flex mx-2 justify-center py-3">
                   <Visibility
@@ -247,6 +241,19 @@ const Users: FC = () => {
             ))}
           </TableBody>
         </Table>
+      </div>
+
+      <div className="flex flex-row mt-3 justify-end">
+        {[...new Array(pages)].map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrIndex(index)}
+            className={`border border-gray-300 rounded-md mx-1 px-2 py-1 
+              ${currIndex === index ? "bg-cyan-100" : ""}`}
+          >
+            {index + 1}
+          </button>
+        ))}
       </div>
     </div>
   );
